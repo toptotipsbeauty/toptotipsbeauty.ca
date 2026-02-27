@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Custom Press-On Nails | Toptotipsbeauty</title>
+<meta name="description" content="Handmade custom press-on nails starting at $35 with installation. Mobile manicure service available in Peterborough. Builder gel or acrylic options.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --cream: #faf8f5;
+    --porcelain: #f0ebe4;
+    --champagne: #d4af37;
+    --champagne-light: #e8d5a3;
+    --charcoal: #2c2a28;
+    --warm-gray: #5a5652;
+    --soft-brown: #8b7355;
+    --white: #ffffff;
+    --shadow: rgba(44, 42, 40, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(250, 248, 245, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 1rem 5%;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--warm-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.back-link:hover { color: var(--champagne); }
+
+.page-hero {
+    padding: 140px 5% 60px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--porcelain) 100%);
+}
+
+.page-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--champagne);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    color: var(--warm-gray);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.price-highlight {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--champagne) 0%, var(--champagne-light) 100%);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--soft-brown);
+}
+
+.carousel-section {
+    padding: 60px 0;
+    background: var(--white);
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    animation: scroll 30s linear infinite;
+    width: max-content;
+    padding: 20px;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.carousel-item {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.process-section {
+    padding: 80px 5%;
+    background: var(--cream);
+}
+
+.process-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.process-step {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--champagne);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin: 0 auto 1rem;
+    font-size: 1.2rem;
+}
+
+.process-step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.process-step p {
+    color: var(--warm-gray);
+    font-size: 0.95rem;
+}
+
+.pricing-section {
+    padding: 80px 5%;
+    background: var(--white);
+    text-align: center;
+}
+
+.pricing-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--cream);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.pricing-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--champagne);
+    margin: 1rem 0;
+}
+
+.price-note {
+    color: var(--warm-gray);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.add-ons {
+    text-align: left;
+    max-width: 400px;
+    margin: 2rem auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.add-ons h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--charcoal);
+}
+
+.add-ons ul {
+    list-style: none;
+}
+
+.add-ons li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--porcelain);
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-ons li:last-child {
+    border-bottom: none;
+}
+
+.mobile-info {
+    background: linear-gradient(135deg, var(--charcoal) 0%, #3a3836 100%);
+    color: var(--white);
+    padding: 3rem;
+    border-radius: 20px;
+    margin-top: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mobile-info h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--champagne-light);
+}
+
+.mobile-info p {
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.order-section {
+    padding: 80px 5%;
+    text-align: center;
+    background: var(--porcelain);
+}
+
+.order-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.order-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--champagne) 0%, var(--champagne-light) 100%);
+    color: var(--white);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--charcoal);
+    border: 2px solid var(--charcoal);
+}
+
+.btn-secondary:hover {
+    background: var(--charcoal);
+    color: var(--white);
+}
+
+.note-box {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    padding: 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-left: 4px solid var(--champagne);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.note-box p {
+    font-size: 0.9rem;
+    color: var(--warm-gray);
+    margin: 0;
+}
+
+footer {
+    background: var(--charcoal);
+    color: var(--porcelain);
+    padding: 40px 5%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .order-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">TTB</a>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <span class="page-tag">Handmade With Care and Precision</span>
+    <h1 class="page-title">Custom Press-On Nails</h1>
+    <p class="page-subtitle">Salon-quality nails designed specifically for your style. Reusable, durable, and delivered to your door—or installed by me in the comfort of your home.</p>
+    
+    <div class="price-highlight">$35 for Basic Manicure & Installation</div>
+    
+    <div class="features">
+        <div class="feature">✨ New set for every occasion</div>
+        <div class="feature">🏠 Mobile Install Available</div>
+        <div class="feature">🎨 Custom Designs</div>
+        <div class="feature">♻️ Reusable</div>
+    </div>
+</section>
+
+<section class="carousel-section">
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <div class="carousel-item"><img src="nail-one.jpg" alt="Nail design 1" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#f0ebe4 0%,#e8d5a3 100%);display:flex;align-items:center;justify-content:center;color:#8b7355;font-family:sans-serif\'>Nail Art 1</div>'"></div>
+            <div class="carousel-item"><img src="nail-two.jpg" alt="Nail design 2" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#d4af37 0%,#f0e68c 100%);display:flex;align-items:center;justify-content:center;color:#5a5652;font-family:sans-serif\'>Nail Art 2</div>'"></div>
+            <div class="carousel-item"><img src="nail-three.jpg" alt="Nail design 3" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#faf8f5 0%,#f0ebe4 100%);display:flex;align-items:center;justify-content:center;color:#d4af37;font-family:sans-serif\'>Nail Art 3</div>'"></div>
+            <div class="carousel-item"><img src="nail-four.jpg" alt="Nail design 4" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#2c2a28 0%,#5a5652 100%);display:flex;align-items:center;justify-content:center;color:white;font-family:sans-serif\'>Nail Art 4</div>'"></div>
+            <div class="carousel-item"><img src="nail-five.jpg" alt="Nail design 5" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#8b7355 0%,#d4af37 100%);display:flex;align-items:center;justify-content:center;color:white;font-family:sans-serif\'>Nail Art 5</div>'"></div>
+            <div class="carousel-item"><img src="nail-six.jpg" alt="Nail design 6" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#f5f5f5 0%,#e8d5a3 100%);display:flex;align-items:center;justify-content:center;color:#2c2a28;font-family:sans-serif\'>Nail Art 6</div>'"></div>
+            <!-- Duplicates for infinite scroll -->
+            <div class="carousel-item"><img src="nail-one.jpg" alt="Nail design 1" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#f0ebe4 0%,#e8d5a3 100%);display:flex;align-items:center;justify-content:center;color:#8b7355;font-family:sans-serif\'>Nail Art 1</div>'"></div>
+            <div class="carousel-item"><img src="nail-two.jpg" alt="Nail design 2" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#d4af37 0%,#f0e68c 100%);display:flex;align-items:center;justify-content:center;color:#5a5652;font-family:sans-serif\'>Nail Art 2</div>'"></div>
+            <div class="carousel-item"><img src="nail-three.jpg" alt="Nail design 3" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#faf8f5 0%,#f0ebe4 100%);display:flex;align-items:center;justify-content:center;color:#d4af37;font-family:sans-serif\'>Nail Art 3</div>'"></div>
+            <div class="carousel-item"><img src="nail-four.jpg" alt="Nail design 4" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#2c2a28 0%,#5a5652 100%);display:flex;align-items:center;justify-content:center;color:white;font-family:sans-serif\'>Nail Art 4</div>'"></div>
+            <div class="carousel-item"><img src="nail-five.jpg" alt="Nail design 5" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#8b7355 0%,#d4af37 100%);display:flex;align-items:center;justify-content:center;color:white;font-family:sans-serif\'>Nail Art 5</div>'"></div>
+            <div class="carousel-item"><img src="nail-six.jpg" alt="Nail design 6" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg,#f5f5f5 0%,#e8d5a3 100%);display:flex;align-items:center;justify-content:center;color:#2c2a28;font-family:sans-serif\'>Nail Art 6</div>'"></div>
+        </div>
+    </div>
+</section>
+
+<section class="process-section">
+    <div class="process-grid">
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Send Inspiration</h3>
+            <p>DM me your nail inspiration photos or describe your dream design</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Choose Your Base</h3>
+            <p>Select builder gel (flexible) or acrylic (sturdy) base—I'll advise what suits your lifestyle</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Custom Creation</h3>
+            <p>Each set is handmade to your specifications and measurements and comes with a mini at home installation kit</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Delivery or Install</h3>
+            <p>Choose shipping, local pickup, or mobile installation with mini manicure</p>
+        </div>
+    </div>
+</section>
+
+<section class="pricing-section">
+    <div class="pricing-card">
+        <h3>Mobile Service Package</h3>
+        <div class="price">$35</div>
+        <p class="price-note">Basic manicure + press-on installation on clean natural nails</p>
+        
+        <div class="add-ons">
+            <h4>Available Add-Ons:</h4>
+            <ul>
+                <li><span>Soak-off previous set</span> <span>+$15</span></li>
+                <li><span>Gel removal</span> <span>+$10</span></li>
+                <li><span>Nail sets and mobile charges are extra</span> <span>Custom quote</span></li>
+            </ul>
+        </div>
+        
+        <div class="mobile-info">
+            <h4>📍 Mobile Service Area</h4>
+            <p>Base: Neptune St & Towerhill Dr intersection, Peterborough</p>
+            <p>First 5km: FREE</p>
+            <p>Additional: $3 per km</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">Exact quote will be provided when booking</p>
+        </div>
+    </div>
+    
+    <div class="note-box">
+        <p><strong>Note:</strong> Acrylic press-ons are sturdy and long-lasting, but may require investing in quality glue (not included) for best results. I'll recommend my favorites when you book!</p>
+    </div>
+</section>
+
+<section class="order-section">
+    <h2 class="order-title">Ready to Order?</h2>
+    <p style="color: var(--warm-gray); margin-bottom: 2rem;">DM me on your preferred platform to start your custom order today</p>
+    <div class="order-buttons">
+        <a href="https://instagram.com/toptotipsnails" target="_blank" class="btn btn-primary">Order on Instagram</a>
+	<a href="https://facebook.com/toptotipsnails" target="_blank" class="btn btn-primary">Order on Facebook</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Toptotipsbeauty | Peterborough, Ontario</p>
+</footer>
+
+</body>
+</html>
