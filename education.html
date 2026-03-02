@@ -166,6 +166,7 @@ body {
     text-decoration: none;
     color: inherit;
     display: block;
+    cursor: pointer;
 }
 
 .free-card:hover {
@@ -201,11 +202,101 @@ body {
     font-size: 0.85rem;
     font-weight: 600;
     transition: all 0.3s;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-small:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-container {
+    background: var(--white);
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--warm-gray);
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.modal-close:hover {
+    background: var(--porcelain);
+    color: var(--charcoal);
+}
+
+.modal-header {
+    padding: 2.5rem 2rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--porcelain);
+}
+
+.modal-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.modal-header p {
+    color: var(--warm-gray);
+    font-size: 0.95rem;
+}
+
+.modal-body {
+    padding: 1rem;
 }
 
 .ebook-section {
@@ -469,6 +560,11 @@ footer {
         transform: none;
         order: -1;
     }
+    
+    .modal-container {
+        margin: 10px;
+        max-height: 95vh;
+    }
 }
 </style>
 </head>
@@ -496,21 +592,59 @@ footer {
     </div>
     
     <div class="free-grid">
-        <a href="thank-you.html" class="free-card">
+        <!-- Hair Types 101 Card -->
+        <div class="free-card" onclick="openModal('hair-types')">
             <div class="free-icon">📖</div>
             <h3>Hair Types 101</h3>
             <p>Understanding Every Texture & How to Style It. Essential knowledge for matching extensions to any client.</p>
-            <span class="btn-small">Download Free</span>
-        </a>
+            <button class="btn-small">Download Free</button>
+        </div>
         
-        <a href="thank-you.html" class="free-card">
+        <!-- Creating the Perfect Vibe Card -->
+        <div class="free-card" onclick="openModal('perfect-vibe')">
             <div class="free-icon">✨</div>
             <h3>Creating the Perfect Vibe</h3>
             <p>Client Experience & Studio Setup Tips. Learn how to create a luxury atmosphere on any budget.</p>
-            <span class="btn-small">Download Free</span>
-        </a>
+            <button class="btn-small">Download Free</button>
+        </div>
     </div>
 </section>
+
+<!-- Modal Popup -->
+<div id="downloadModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-container" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-header">
+            <h3 id="modalTitle">Get Your Free Ebook</h3>
+            <p>Enter your details below and we'll send it to your inbox!</p>
+        </div>
+        <div class="modal-body">
+            <!-- Tally Form Embed -->
+            <iframe 
+                data-tally-src="https://tally.so/embed/GxrgrL?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                loading="lazy" 
+                width="100%" 
+                height="576" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0" 
+                title="Contact Form">
+            </iframe>
+            <script>
+                var d=document,w="https://tally.so/widgets/embed.js",v=function(){
+                    "undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){
+                        e.src=e.dataset.tallySrc
+                    }))
+                };
+                if("undefined"!=typeof Tally)v();
+                else if(d.querySelector('script[src="'+w+'"]')==null){
+                    var s=d.createElement("script");
+                    s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);
+                }
+            </script>
+        </div>
+    </div>
+</div>
 
 <section class="ebook-section">
     <div class="ebook-container">
@@ -608,6 +742,40 @@ footer {
     <p>© 2026 Toptotipsbeauty | Peterborough, Ontario</p>
     <p style="margin-top: 0.5rem; opacity: 0.8;">Questions? DM @toptotipshair</p>
 </footer>
+
+<script>
+// Modal Functions
+function openModal(ebookType) {
+    const modal = document.getElementById('downloadModal');
+    const title = document.getElementById('modalTitle');
+    
+    // Update title based on which ebook was clicked
+    if (ebookType === 'hair-types') {
+        title.textContent = 'Get Hair Types 101';
+    } else if (ebookType === 'perfect-vibe') {
+        title.textContent = 'Get Creating the Perfect Vibe';
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeModal(event) {
+    // Close if clicking overlay or close button
+    if (!event || event.target === event.currentTarget || event.target.classList.contains('modal-close')) {
+        const modal = document.getElementById('downloadModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+</script>
 
 </body>
 </html>
